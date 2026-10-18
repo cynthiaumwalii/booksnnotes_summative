@@ -37,7 +37,7 @@ dialog.addEventListener("click", (e) => {
 
 const dialogTitle = document.getElementById("dialogTitle")
 const submitButton = document.getElementById("submitButton");
-
+const formError = document.getElementById("formError");
 dialog.addEventListener("close", () => {
   editingId = null;
   form.reset();
@@ -76,26 +76,28 @@ const values = {
   const error = validateRecord(values);
 
   if (error) {
-    return alert(error)
+    formError.textContent = `${error}`;
+    return;
   }
+
+  formError.textContent = "";
 
   const newRecord = {
     ...values,
     tags: values.tags.split(",").map((tag) => tag.trim()),
-    notes: [{ text: values.notes}]
+    notes: [{ text: values.notes}],
+    updatedAt: new Date().toISOString().slice(0, 10)
   };
 
   const records = fetchLocalStorageRecords();
 
   //if it is a rec we are editing, the edited version replaces the existing/old version in local storage
   if (editingId) {
-    const index = records.findIndex((record) => record.id === editingId);
+    const index = records.findIndex((record) => String(record.id) === editingId);
     records[index] = { ...records[index], ...newRecord };
   }else{
   records.push({
     id: Date.now(),
-    createdAt: new Date().toISOString().slice(0, 10),
-    updatedAt: new Date().toISOString().slice(0, 10),
     ...newRecord,
   });
 }
@@ -103,12 +105,13 @@ const values = {
   loadRecords();
   form.reset();
   dialog.close();
+  alert("Success")
 });
 
 //this is the function called when we click edit button. it immediately finds record locally by id,
 //then populates its data in the form for editing
 const editRecord = (id) => {
-  const record = fetchLocalStorageRecords().find((record) => record.id === id);
+  const record = fetchLocalStorageRecords().find((record) => String(record.id) === id);
   if (!record) {
     return;
   }
@@ -140,7 +143,7 @@ const deleteRecord = (id) => {
     return;
   }
   const records = fetchLocalStorageRecords().filter(
-    (record) => record.id !== id,
+    (record) => String(record.id) !== id,
   );
   saveRecordsLocally(records);
   loadRecords();
