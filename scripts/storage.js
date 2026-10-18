@@ -21,7 +21,7 @@ export const saveRecordsLocally = (records) => {
 export const storeSeedRecordsLocally = async () => {
     if (localStorage.getItem(STORAGE_KEY) === null) {
         try {
-            const response = await fetch('../seed.json');
+            const response = await fetch('seed.json');
             const seedRecords = await response.json();
             const toLocalStorage = seedRecords.map((record, i) => ({
                 id: Date.now() + i,
