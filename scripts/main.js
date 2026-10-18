@@ -6,6 +6,7 @@ import { sortByDate, sortByRating, sortBySummary } from "./sortRecords.js";
 import { readImportFile, importRecords, exportRecords } from "./importExport.js";
 import { toggleNavbar } from "./toggleNavbar.js";
 import { dashboardStatsCards } from "./dashboardCards.js";
+import { showChart } from "./booksChart.js";
 
 const recordsTable = document.getElementById("records-table");
 
@@ -16,6 +17,7 @@ const loadRecords = async () => {
   await storeSeedRecordsLocally();
   allRecords = fetchLocalStorageRecords();
   dashboardStatsCards(allRecords);
+  showChart(allRecords);
   displayRecords(allRecords, null);
 }
 
@@ -86,7 +88,6 @@ const values = {
     ...values,
     tags: values.tags.split(",").map((tag) => tag.trim()),
     notes: [{ text: values.notes}],
-    updatedAt: new Date().toISOString().slice(0, 10)
   };
 
   const records = fetchLocalStorageRecords();
@@ -98,7 +99,9 @@ const values = {
   }else{
   records.push({
     id: Date.now(),
-    ...newRecord,
+    createdAt: new Date().toISOString().slice(0, 10),
+    updatedAt: new Date().toISOString().slice(0, 10),
+    ...newRecord
   });
 }
   saveRecordsLocally(records);

@@ -232,6 +232,8 @@ button {
   padding: 4px 6px;
   overflow: hidden;
   display: flex;
+  flex: 1;
+  max-width: 480px;
 }
 
 .input-container input {
@@ -358,7 +360,7 @@ dialog .form-buttons .danger {
 mark {
   background-color: rgb(247, 247, 109);
   color: darkgoldenrod;
-  height:fit-content;
+  height: fit-content;
 }
 
 .toggle-navbar {
@@ -373,7 +375,8 @@ mark {
   margin-bottom: 8px;
 }
 
-.settings input, #timeUnits {
+.settings input,
+#timeUnits {
   border: none;
   padding: 8px;
   border: 1px solid rgb(213, 212, 212);
@@ -383,11 +386,14 @@ mark {
   display: flex;
   gap: 16px;
   justify-content: center;
-  width:fit-content;
+  width: fit-content;
   margin-top: 12px;
 }
 
-#capStatus, #convertResult, #settingsStatus, #formError {
+#capStatus,
+#convertResult,
+#settingsStatus,
+#formError {
   color: red;
   font-weight: 500;
   font-size: 14px;
@@ -396,6 +402,37 @@ mark {
 
 .thresholds div {
   margin-top: 12px;
+}
+
+.chart h2 {
+  margin-bottom: 12px;
+}
+
+.book-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 180px;
+  padding: 16px;
+  border: 1px solid rgb(213, 212, 212);
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  font-size: 13px;
+  text-align: center;
+}
+.bar {
+  background: orange;
+  min-height: 2px;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.4s ease;
 }
 
 @media (max-width: 480px) {

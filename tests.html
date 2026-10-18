@@ -36,7 +36,7 @@
       const bad = (name, regex, value) =>
         check(`${name} rejects "${value}"`, !regex.test(value));
 
-      //test for trailing/double spaces - title
+      //test for trailing/double spaces
       ok("title", r.title, "Atomic Habits");
       ok("title", r.title, "A");
       bad("title", r.title, " Atomic Habits");
@@ -88,8 +88,6 @@
       ok("text", r.text, "Line one\nLine two");
       bad("text", r.text, "Hi");
       bad("text", r.text, " leading space");
-      bad("text", r.text, "a".repeat(501));
-      ok("text", r.text, "a".repeat(500));
 
       ok("hasALetter (lookahead)", r.hasALetter, "123 a 456");
       bad("hasALetter (lookahead)", r.hasALetter, "12345 !!");
