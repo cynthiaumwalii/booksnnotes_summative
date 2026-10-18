@@ -5,6 +5,8 @@ export const showChart = (records) => {
   const counts = [];
   const labels = [];
 
+  //loop through seven days and compares each date to the date a record was created at. 
+  //if a match is found, the number of records associated with the date is incremented
   for (let index = 6; index >= 0; index--) {
     const date = new Date();
     date.setDate(date.getDate() - index);

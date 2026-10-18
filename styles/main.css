@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:focus-visible {
+  outline: 2px solid darkred;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: white;
@@ -558,9 +562,15 @@ mark {
     text-align: left;
   }
 
+  td[data-label]::before {
+    content: attr(data-label);
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-right: 12px;
+  }
+
   .action-buttons {
     display: flex;
-    justify-content: end;
   }
 
   .vision {

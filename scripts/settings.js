@@ -1,6 +1,7 @@
 import { toggleNavbar } from "./toggleNavbar.js";
 import { fetchLocalStorageRecords, getCap, saveCap } from "./storage.js";
 
+//these keys identify user's reading speed and chosen time unit in local storage
 const PPH_KEY = "booksnnotes_pph";
 const UNIT_KEY = "booksnnotes_unit";
 
@@ -13,13 +14,17 @@ const convertResults = document.getElementById("convertResult");
 const readingTime = document.getElementById("readingTime");
 const settingsStatus = document.getElementById("settingsStatus");
 
+//pagesToTimes converts pages to reading time using the reading speed
+//representation of the time depends on value chosen: if it's hours or minutes
 const pagesToTime = (pages, pagesPerHour, unit) => {
     const minutes = (pages / pagesPerHour) * 60;
     return unit === "hours" ? `${(minutes / 60).toFixed(1)} hours` : `${Math.round(minutes)} minutes`; 
 };
 
+//gets the user's reading speed input. if there'snt then it takes 30 by default
 const getSpeed = () => Number(pagesPerHour.value) || 30;
 
+//updateResults refreshes the converted results and the total time of the whole vault
 const updateResults = () => {
     const unit = timeUnits.value;
     const pages = Number(convertPages.value);
@@ -32,6 +37,9 @@ const updateResults = () => {
     readingTime.textContent = `The vault of (${totalPages} pages) is about ${pagesToTime(totalPages, getSpeed(), unit)}.`;
 }
 
+//updateCapStatus tells the user whether they have more room of pages left or not by their cap set
+//upper your cap - more room - meaning total pages are under the cap
+//under your cap - less room - meaning total pages are over the set cap
 const updateCapStatus = () => {
     const cap = getCap()
     const totalPages = fetchLocalStorageRecords().reduce(

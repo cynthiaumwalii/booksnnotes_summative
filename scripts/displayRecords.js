@@ -39,13 +39,13 @@ export const displayRecords = (records, regexPattern) => {
   records.forEach((record) => {
     const fields = getRowValues(record);
     const row = document.createElement("tr");
-    row.innerHTML = `<td>${highlightMatch(fields.title, regexPattern)}</td>
-        <td>${highlightMatch(fields.author, regexPattern)}</td>
-        <td>${escapeHTML(record.createdAt)}</td>
-        <td>${highlightMatch(fields.summary, regexPattern)}</td>
-        <td>${highlightMatch(fields.tags, regexPattern)}</td>
-        <td>${escapeHTML(record.rating)}</td>
-        <td>${highlightMatch(fields.notes, regexPattern)}</td>
+    row.innerHTML = `<td data-label="Title: ">${highlightMatch(fields.title, regexPattern)}</td>
+        <td data-label="Author: ">${highlightMatch(fields.author, regexPattern)}</td>
+        <td data-label="Date Added: ">${escapeHTML(record.createdAt)}</td>
+        <td data-label="Summary: ">${highlightMatch(fields.summary, regexPattern)}</td>
+        <td data-label="Tags: ">${highlightMatch(fields.tags, regexPattern)}</td>
+        <td data-label="Rating: ">${escapeHTML(record.rating)}</td>
+        <td data-label="Notes: ">${highlightMatch(fields.notes, regexPattern)}</td>
         <td>
         <div class="action-buttons">
             <button class="editButton" data-action="edit" data-id="${record.id}" title="Edit" aria-label="Edit ${escapeHTML(record.title)}">&#128393;</button>

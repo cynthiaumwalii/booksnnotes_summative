@@ -154,7 +154,7 @@ const deleteRecord = (id) => {
 
 //here, file import elements are attached event listeners to to trigger corresponding functionality
 //importFile listens for a file upload then calls importRecords on a successful file parsing
-//import button listens for a click on the file input field then triggers its opening
+//importButton listens for a click on the file input field then triggers its opening
 const importFile = document.getElementById("importFile");
 
 const importButton = document.getElementById("importButton");

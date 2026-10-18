@@ -1,7 +1,7 @@
 import { regexPatterns } from "./regexPatterns.js";
 
 //validateRecord checks one record against the regexes
-//it returns an error message if something is wrong, or null if everything is fine
+//it returns an error message if the value fails against it, or null if everything is fine
 
 export const validateRecord = (record) => {
     if (!regexPatterns.title.test(record.title)) return "Invalid title";

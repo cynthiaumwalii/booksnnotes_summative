@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tests | Books&Notes</title>
+    <title>Tests | BooksnNotes</title>
   </head>
   <body>
-    <h1>Books&Notes tests</h1>
+    <h1>BooksnNotes tests</h1>
     <p id="summary" role="status"></p>
     <ul id="results"></ul>
     <script type="module">
@@ -89,16 +89,16 @@
       bad("text", r.text, "Hi");
       bad("text", r.text, " leading space");
 
-      ok("hasALetter (lookahead)", r.hasALetter, "123 a 456");
-      bad("hasALetter (lookahead)", r.hasALetter, "12345 !!");
+      ok("hasALetter", r.hasALetter, "123 a 456");
+      bad("hasALetter", r.hasALetter, "12345 !!");
       ok(
-        "duplicateWord (back-reference)",
+        "duplicateWord",
         r.duplicateWord,
         "this is the the best",
       );
-      ok("duplicateWord (back-reference)", r.duplicateWord, "Is is");
+      ok("duplicateWord", r.duplicateWord, "Is is");
       bad(
-        "duplicateWord (back-reference)",
+        "duplicateWord",
         r.duplicateWord,
         "this is the best",
       );
