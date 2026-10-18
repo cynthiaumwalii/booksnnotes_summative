@@ -5,7 +5,7 @@ A vanilla HTML, CSS and JavaScript website for saving books, summaries and notes
 - **Author:** Cynthia Umwali
 - **Contact:** c.umwali@alustudent.com
 - **GitHub repo:** https://github.com/cynthiaumwalii/booknnotesvault_summative
-- **Live site:** `
+- **Live site:** https://cynthiaumwalii.github.io/booksnnotes_summative/
 - **Demo video:** 
 
 ## Pages
