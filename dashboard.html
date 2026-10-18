@@ -16,10 +16,10 @@
         </h2>
         <ul class="nav-links">
           <li><a href="home.html">Home</a></li>
-          <li><a href="home.html">About</a></li>
-          <li><a href="settings.html">Contact</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="tests.html">Tests</a></li>
         </ul>
-        <button id="settingsPage">Settings</button>
+        <button id="settingsPage"><a href="settings.html" style="color: white;">Settings</a></button>
       </nav>
     </header>
     <main class="dashboard">
@@ -38,7 +38,7 @@
           <p>Total Records</p>
         </div>
         <div class="card">
-          <h3 id="totalPages">350</h3>
+          <h3 id="totalPages">0</h3>
           <p>Pages</p>
         </div>
         <div class="card">
@@ -46,7 +46,7 @@
           <p>Top Genre</p>
         </div>
         <div class="card">
-          <h3 id="addedLast7Days">75</h3>
+          <h3 id="addedLast7Days">0</h3>
           <p>Books Added Last 7 days</p>
         </div>
       </section>
@@ -62,7 +62,7 @@
         </div>
         <div>
           <input type="checkbox" id="caseSnstvToggle" checked />
-          <label for="caseToggle">Case-insensitive</label>
+          <label for="caseSnstvToggle">Case-insensitive</label>
         </div>
       </section>
       <p id="searchStatus" role="status"></p>
@@ -80,23 +80,23 @@
         <table id="records-table">
           <thead>
             <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">
                 Date Added
-                <button class="sort-button" id="sortByDate">&#8693;</button>
+                <button class="sort-button" id="sortByDate" aria-label="Sort by date">&#8693;</button>
               </th>
-              <th>
+              <th scope="col">
                 Summary
-                <button class="sort-button" id="sortBySummary">&#8693;</button>
+                <button class="sort-button" id="sortBySummary" aria-label="Sort by summary">&#8693;</button>
               </th>
-              <th>Tags</th>
-              <th>
+              <th scope="col">Tags</th>
+              <th scope="col">
                 Rating
-                <button class="sort-button" id="sortByRating">&#8693;</button>
+                <button class="sort-button" id="sortByRating" aria-label="Sort by rating">&#8693;</button>
               </th>
-              <th>Notes</th>
-              <th>Action</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -105,7 +105,7 @@
     </main>
     <dialog id="form-container">
       <h2 id="dialogTitle">Add Record</h2>
-      <form id="addRecordForm">
+      <form id="addRecordForm" novalidate>
         <label for="title">Title:</label>
         <input
           type="text"
@@ -198,6 +198,7 @@
           placeholder="Pages"
           required
         />
+        <p id="formError" role="alert"></p>
         <div class="form-buttons">
           <button type="submit" class="success" id="submitButton">
             Add Record
