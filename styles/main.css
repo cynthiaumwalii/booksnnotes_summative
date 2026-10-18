@@ -82,7 +82,7 @@ img {
   border-radius: 8px;
 }
 
-button {
+button, .button-link {
   padding: 10px 24px;
   color: white;
   background-color: orange;
